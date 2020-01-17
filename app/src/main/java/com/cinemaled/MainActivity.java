@@ -1,17 +1,21 @@
 package com.cinemaled;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -24,6 +28,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cinemaled.bean.MovieBean;
+import com.cinemaled.utils.AlertDialogUtils;
+import com.cinemaled.utils.LocationUtils;
 import com.cinemaled.utils.XmlParser;
 import com.google.gson.Gson;
 import com.maning.updatelibrary.InstallUtils;
@@ -61,6 +67,12 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        LocationUtils.getInstance().startLocalService(this, new LocationUtils.OnLocationClickListener() {
+            @Override
+            public void onlocationlistener() {
+
+            }
+        });
         init();
         materialSynchronization();
     }
@@ -367,5 +379,11 @@ public class MainActivity extends Activity implements MediaPlayer.OnCompletionLi
                 }
             }
         }).start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocationUtils.getInstance().stopLocalService();
     }
 }

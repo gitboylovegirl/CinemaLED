@@ -29,4 +29,26 @@ dependencies {
 
     // 用Gson解析json的转换器
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    //butterknife
+    implementation 'com.jakewharton:butterknife:8.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
+    //retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+
+    //rxjava2
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
+
+    //导入design包
+    implementation 'com.android.support:design:28.0.0-rc01'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    //高德定位
+    implementation 'com.amap.api:location:latest.integration'
+    implementation 'com.alibaba:fastjson:1.1.54.android'
+
 }
